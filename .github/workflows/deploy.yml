@@ -23,7 +23,7 @@ jobs:
       # 3. Ejecutar las pruebas unitarias
       - name: Run Unit Tests
         run: |
-          python -m unittest test_index.py
+          python -m unittest test_page.py
 
       # 4. Confirmar que todo está listo
       - name: Deployment Confirmation
