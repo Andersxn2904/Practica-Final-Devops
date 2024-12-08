@@ -1,0 +1,22 @@
+name: CI for HTML Page
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python😊
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Run unit tests1️⃣
+        run: |
+          python -m unittest discover -s . -p "test_*.py"
