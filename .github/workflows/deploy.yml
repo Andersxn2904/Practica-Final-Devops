@@ -1,22 +1,30 @@
-name: CI for HTML Page
+name: Test and Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Se activa cuando haces push en la rama main
 
 jobs:
-  test:
+  test-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      # 1. Clonar el repositorio
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Python😊
-        uses: actions/setup-python@v4
+      # 2. Configurar Python para ejecutar las pruebas
+      - name: Set up Python
+        uses: actions/setup-python@v3
         with:
-          python-version: "3.9"
+          python-version: 3.x
 
-      - name: Run unit tests1️⃣
+      # 3. Ejecutar las pruebas unitarias
+      - name: Run Unit Tests
         run: |
-          python -m unittest discover -s . -p "test_*.py"
+          python -m unittest test_index.py
+
+      # 4. Confirmar que todo está listo
+      - name: Deployment Confirmation
+        run: echo "Tests passed! Content ready for GitHub Pages."
